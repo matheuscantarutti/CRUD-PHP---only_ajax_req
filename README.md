@@ -1,12 +1,12 @@
 <h1><a href="Views/agenda.php">Projeto 1</a></h1>
 
-    <h3>1) Construir um CRUD para gerenciamento de clientes.</h3>
+    <h2>1) Construir um CRUD para gerenciamento de clientes.</h2>
 
-	<h3>2) Construir um CRUD para gerenciamento de Produtos e Estoque.</h3>
+	<h2>2) Construir um CRUD para gerenciamento de Produtos e Estoque.</h2>
 
-	<h3> 3) Construir um CRUD para gerenciamento de Venda de produtos</h3> 
+	<h2> 3) Construir um CRUD para gerenciamento de Venda de produtos</h2> 
 
-	<h3>4) Gerar relatorio de vendas, clientes e produtos em PDF.</h3> 
+	<h2>4) Gerar relatorio de vendas, clientes e produtos em PDF.</h2> 
 
 	<h2> Especificações gerais</h2>
 	

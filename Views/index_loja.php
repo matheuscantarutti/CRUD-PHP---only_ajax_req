@@ -77,7 +77,7 @@
             });
 
             var form = document.getElementById("form_carrinho");
-            form.addEventListener("click", function(e){
+            form.addEventListener("submit", function(e){
                 e.preventDefault();
                 salvaVenda(form);
             });

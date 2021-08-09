@@ -9,9 +9,9 @@ if (window.XMLHttpRequest) {
 }
 
 function salvaVenda(form){
-    var total_preco = form.elements.total_preco;
-    var total_qtd = form.elements.total_qtd;
-    var id_cliente = form.elements.id_cliente;
+    var total_preco = form.elements.total_preco.value;
+    var total_qtd = form.elements.total_qtd.value;
+    var id_cliente = form.elements.id_cliente.value;
     var produtos = [];
     var produto;
     
@@ -50,6 +50,10 @@ function salvaVenda(form){
 				var response = httpRequest.responseText
                 console.log(response)
                 form.reset();
+                var divDetalhesVenda = document.getElementById('divDetalhesVenda');
+                while(divDetalhesVenda.firstChild){
+                    divDetalhesVenda.removeChild(divDetalhesVenda.firstChild);
+                }
 			} else {
 				alert('Houve um problema com esta requisição, contate o Administrador.');
 			}

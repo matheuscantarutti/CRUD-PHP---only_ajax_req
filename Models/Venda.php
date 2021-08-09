@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Models;
 
 require_once "../Utils/autoloader.php";
@@ -50,19 +49,6 @@ use PDO;
             return $vendas; 
         }
 
-        public static function disponiveis(){
-            $sql = "SELECT * FROM vendas WHERE quantidade > 0";
-
-            $stmt = Db::getConn()->prepare($sql);
-            $stmt->execute();
-
-            $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $vendas; 
-        }
-
-
-
         public static function vendaPorId($id_venda){
             $sql = "SELECT * FROM vendas WHERE id = :id_venda";
             $stmt = Db::getConn()->prepare($sql);
@@ -73,21 +59,21 @@ use PDO;
 
         public function createVenda(){
             $sql = "INSERT INTO `rbm_test`.`vendas`
-                        (`nome`,
-                        `preco`,
-                        `descricao`,
-                        `quantidade`)
-                    VALUES
-                        (:nome,
-                        :preco,
-                        :descricao,
-                        :quantidade)";
+            (`data_venda`,
+            `preco`,
+            `quantidade`,
+            `id_cliente`)
+        VALUES
+            (:data_venda, 
+            :preco,
+            :quantidade,
+            :id_cliente)";
 
             $stmt = Db::getConn()->prepare($sql);
 
-            $result = $stmt->execute(array('nome' => $this->nome, 
+            $result = $stmt->execute(array('data_venda' => $this->data, 
                                             'preco' => $this->preco, 
-                                            'descricao' => $this->descricao,
+                                            'id_cliente' => $this->cliente,
                                             'quantidade' => $this->quantidade));
             if($result){
                 return $result;
@@ -96,45 +82,5 @@ use PDO;
             }
         }
 
-        public function updateVenda($id_venda){
-            $sql = "UPDATE `rbm_test`.`vendas`
-                    SET
-                        `nome` = :nome,
-                        `preco` = :preco,
-                        `descricao` = :descricao,
-                        `quantidade` = :quantidade
-                    WHERE 
-                        `id` = :id_venda";
-            
-            $stmt = Db::getConn()->prepare($sql);
-
-            $result = $stmt->execute(array('nome' => $this->nome, 
-                                            'preco' => $this->preco, 
-                                            'descricao' => $this->descricao,
-                                            'quantidade' => $this->quantidade,
-                                            'id_venda' => $id_venda));
-
-            if($result){
-                return $result;
-            } else {
-                echo "bad.".$stmt->errorInfo()[2];
-            }
-        }
-
-        public static function deletaVenda($id_venda){
-            $sql = "DELETE FROM `rbm_test`.`vendas`
-                    WHERE id = :id_venda";
-            
-            $stmt = Db::getConn()->prepare($sql);
-
-            $result = $stmt->execute(array('id_venda' => $id_venda));
-
-            if($result){
-                return $result;
-            } else {
-                echo "bad.".$stmt->errorInfo()[2];
-            }
-            
-        }
 
     }

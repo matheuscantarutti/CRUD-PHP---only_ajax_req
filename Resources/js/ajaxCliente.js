@@ -1,4 +1,3 @@
-
 var httpRequest;
 
 if (window.XMLHttpRequest) { 
@@ -7,15 +6,20 @@ if (window.XMLHttpRequest) {
     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-
-
-function listaClientes(){
+function listaClientes(page){
 	httpRequest.onreadystatechange = function(){
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status === 200) {
                 
 				var response = JSON.parse(httpRequest.responseText);
-				preencheTabelaClientes(response);
+                if(page == "index"){
+
+				    preencheTabelaClientes(response);
+                }
+                if(page == "loja"){
+                    clearInput();
+                    preencheSelect(response);
+                }
 			} else {
 				alert('Houve um problema com esta requisição, contate o Administrador.');
 			}
@@ -25,6 +29,30 @@ function listaClientes(){
     httpRequest.open('POST', `../Controllers/cliente.php`, true);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send('acao=lista_clientes');
+}
+
+function clearInput(){
+    var inputTotalPreco = document.getElementById('total_preco');
+    var inputTotalQtd = document.getElementById('total_qtd')
+
+    inputTotalPreco.value = 0;
+    inputTotalQtd.value = 0;
+}
+
+function preencheSelect(lista_objetos){
+    var select = document.getElementById('select_clientes');
+    var disableOption = document.createElement('option');
+    lista_objetos.forEach(element => {
+        var option = document.createElement('option');
+        option.innerHTML = element.nome;
+        option.setAttribute("value", element.id);
+        select.appendChild(option);
+    });
+    disableOption.setAttribute("disabled", true);
+    disableOption.innerHTML="Escolha o cliente";
+    disableOption.setAttribute("selected", true);
+    select.appendChild(disableOption);
+
 }
 
 function preencheTabelaClientes(lista_objetos){
@@ -125,7 +153,7 @@ function salvaCadastro(form){
                 mostraMsgCadastro(response);
                 form.reset();
 			} else {
-				alert('Houve um problema com esta requisição, contate o Administrador.');
+				alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
 			}
 		}
 	}
@@ -165,7 +193,7 @@ function clientePorId(idCliente){
 				var response = JSON.parse(httpRequest.responseText)
                 preencheForm(response);
 			} else {
-				alert('Houve um problema com esta requisição, contate o Administrador.');
+				alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
 			}
 		}
 	}
@@ -187,7 +215,7 @@ function preencheForm(objeto){
 }
 
 function deletaCliente(idCliente){
-    var autrizacao = confirm("Você tem certeza que deseja excluir o cadastro deste cliente?");
+    var autrizacao = confirm("VocÃª tem certeza que deseja excluir o cadastro deste cliente?");
     if(autrizacao){
         httpRequest.onreadystatechange = function(){
             if (httpRequest.readyState == 4) {
@@ -197,7 +225,7 @@ function deletaCliente(idCliente){
                     mostraMsgCadastro(response)
                     listaClientes()
                 } else {
-                    alert('Houve um problema com esta requisição, contate o Administrador.');
+                    alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
                 }
             }
         }

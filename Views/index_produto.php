@@ -33,6 +33,7 @@
 						<th>Preco</th>
 						<th>Qtd em estoque</th>
 						<th>Descricao</th>
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody id="body-tabela-produto">
@@ -43,7 +44,7 @@
 		<script src="../Resources/js/ajaxProduto.js"></script>
 		<script>
 			window.onload = function(){
-				listaProdutos();
+				listaProdutos("todos");
 			}
 		</script>
 	</body>

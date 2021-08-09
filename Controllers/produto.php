@@ -7,8 +7,14 @@
     Use Models\Produto as Produto;
 
     if($_POST["acao"] == "lista_produtos"){
-        
-        $produtos = Produto::listaProdutos();
+
+        if($_POST["mode"] == "todos"){
+            $produtos = Produto::listaProdutos();
+        }
+
+        if($_POST["mode"] == "disponiveis"){
+            $produtos = Produto::disponiveis();
+        }
 
         echo json_encode($produtos);
     }

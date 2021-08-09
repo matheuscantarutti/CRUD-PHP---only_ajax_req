@@ -7,7 +7,7 @@
 
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-            <a class="nav-link " href="">Loja</a>
+            <a class="nav-link " href="index_loja.php">Loja</a>
         </li>
         <li class="nav-item">
             <a class="nav-link " href="index_cliente.php">Clientes</a>
@@ -17,7 +17,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="index.php">Carrinho</a>
+            <a class="nav-link" href="">Relatório</a>
         </li>
     </ul>
 </header>

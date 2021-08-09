@@ -26,8 +26,7 @@
 	Ambiente de desenvolvimento
 
 	
-		<a href="https://laragon.org/">Laragon</a> 4.0.16
-	
+		Laragon 4.0.16
 
 	Ferramentas de desenvolvimento
 	

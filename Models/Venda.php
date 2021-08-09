@@ -8,21 +8,21 @@ require_once "../Utils/autoloader.php";
 Use Data\Db as Db;
 use PDO;
 
-    class Produto{
+    class Venda{
 
         protected $id;
-        protected $nome;
+        protected $data;
         protected $preco;
         protected $quantidade;
-        protected $descricao;
+        protected $cliente;
 
 
-        public function __construct($nome, $preco, $quantidade, $descricao)
+        public function __construct($data, $preco, $quantidade, $cliente)
         {
-            $this->nome = $nome;
+            $this->data = $data;
             $this->preco = $preco;
             $this->quantidade = $quantidade;
-            $this->descricao = $descricao;
+            $this->cliente = $cliente;
         }
 
         public function __get($property) {
@@ -39,40 +39,40 @@ use PDO;
             return $this;
         }
 
-        public static function listaProdutos(){
-            $sql = "SELECT * FROM produtos";
+        public static function listaVendas(){
+            $sql = "SELECT * FROM vendas";
 
             $stmt = Db::getConn()->prepare($sql);
             $stmt->execute();
 
-            $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $produtos; 
+            return $vendas; 
         }
 
         public static function disponiveis(){
-            $sql = "SELECT * FROM produtos WHERE quantidade > 0";
+            $sql = "SELECT * FROM vendas WHERE quantidade > 0";
 
             $stmt = Db::getConn()->prepare($sql);
             $stmt->execute();
 
-            $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $produtos; 
+            return $vendas; 
         }
 
 
 
-        public static function produtoPorId($id_produto){
-            $sql = "SELECT * FROM produtos WHERE id = :id_produto";
+        public static function vendaPorId($id_venda){
+            $sql = "SELECT * FROM vendas WHERE id = :id_venda";
             $stmt = Db::getConn()->prepare($sql);
-            $stmt->execute(array('id_produto' => $id_produto));
-            $produto = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $produto; 
+            $stmt->execute(array('id_venda' => $id_venda));
+            $venda = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $venda; 
         }
 
-        public function createProduto(){
-            $sql = "INSERT INTO `rbm_test`.`produtos`
+        public function createVenda(){
+            $sql = "INSERT INTO `rbm_test`.`vendas`
                         (`nome`,
                         `preco`,
                         `descricao`,
@@ -96,15 +96,15 @@ use PDO;
             }
         }
 
-        public function updateProduto($id_produto){
-            $sql = "UPDATE `rbm_test`.`produtos`
+        public function updateVenda($id_venda){
+            $sql = "UPDATE `rbm_test`.`vendas`
                     SET
                         `nome` = :nome,
                         `preco` = :preco,
                         `descricao` = :descricao,
                         `quantidade` = :quantidade
                     WHERE 
-                        `id` = :id_produto";
+                        `id` = :id_venda";
             
             $stmt = Db::getConn()->prepare($sql);
 
@@ -112,7 +112,7 @@ use PDO;
                                             'preco' => $this->preco, 
                                             'descricao' => $this->descricao,
                                             'quantidade' => $this->quantidade,
-                                            'id_produto' => $id_produto));
+                                            'id_venda' => $id_venda));
 
             if($result){
                 return $result;
@@ -121,13 +121,13 @@ use PDO;
             }
         }
 
-        public static function deletaProduto($id_produto){
-            $sql = "DELETE FROM `rbm_test`.`produtos`
-                    WHERE id = :id_produto";
+        public static function deletaVenda($id_venda){
+            $sql = "DELETE FROM `rbm_test`.`vendas`
+                    WHERE id = :id_venda";
             
             $stmt = Db::getConn()->prepare($sql);
 
-            $result = $stmt->execute(array('id_produto' => $id_produto));
+            $result = $stmt->execute(array('id_venda' => $id_venda));
 
             if($result){
                 return $result;

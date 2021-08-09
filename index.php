@@ -34,7 +34,7 @@
 		<li>Apresentar no final o valor total da compra.</li>
 	</ul>
 
-	<h2>Ferramentas e versÃµes</h2>
+	<h2>Ferramentas e versões</h2>
 
 	<h3>Ambiente de desenvolvimento</h3>
 
@@ -45,9 +45,9 @@
 
 	<h3>Ferramentas de desenvolvimento</h3>
 	<ul>
-		<li>PHP - versÃ£o 7.4</li>
-		<li>MySQL - versÃ£o 8.0.20</li>
-		<li>Bootstrap - versÃ£o 5.0</li>
+		<li>PHP - versão 7.4</li>
+		<li>MySQL - versão 8.0.20</li>
+		<li>Bootstrap - versão 5.0</li>
 	</ul>
 
 

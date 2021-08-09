@@ -21,8 +21,6 @@
 				<a href="cadastro_cliente.php" class="btn btn-success float-end">
 					Cadastrar Cliente
 				</a>
-				<h2></h2>
-				<div class="clearfix"></div>
 			</div>
 
 			<table class="table table-striped" >
@@ -43,7 +41,7 @@
 		<script src="../Resources/js/ajaxCliente.js"></script>
 		<script>
 			window.onload = function(){
-				listaClientes();
+				listaClientes("index");
 			}
 
 		</script>

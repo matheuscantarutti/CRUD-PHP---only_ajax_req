@@ -15,6 +15,7 @@ use PDO;
         protected $preco;
         protected $quantidade;
         protected $descricao;
+        
 
 
         public function __construct($nome, $preco, $quantidade, $descricao)
@@ -112,6 +113,25 @@ use PDO;
                                             'preco' => $this->preco, 
                                             'descricao' => $this->descricao,
                                             'quantidade' => $this->quantidade,
+                                            'id_produto' => $id_produto));
+
+            if($result){
+                return $result;
+            } else {
+                echo "bad.".$stmt->errorInfo()[2];
+            }
+        }
+
+        public static function updateProdutoEstoque($id_produto, $qtd_venda){
+            $sql = "UPDATE `rbm_test`.`produtos`
+                    SET
+                        `quantidade` = (quantidade - :qtd_venda)
+                    WHERE 
+                        `id` = :id_produto";
+            
+            $stmt = Db::getConn()->prepare($sql);
+
+            $result = $stmt->execute(array('qtd_venda' => $qtd_venda,
                                             'id_produto' => $id_produto));
 
             if($result){

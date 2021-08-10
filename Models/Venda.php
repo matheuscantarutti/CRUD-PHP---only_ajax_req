@@ -39,7 +39,11 @@ use PDO;
         }
 
         public static function listaVendas(){
-            $sql = "SELECT * FROM vendas";
+            $sql = "SELECT 
+                        v.*, c.nome 
+                    from 
+                        vendas v 
+                        join clientes c on v.id_cliente = c.id";
 
             $stmt = Db::getConn()->prepare($sql);
             $stmt->execute();
@@ -81,6 +85,8 @@ use PDO;
                 echo "bad.".$stmt->errorInfo()[2];
             }
         }
+
+        
 
 
     }

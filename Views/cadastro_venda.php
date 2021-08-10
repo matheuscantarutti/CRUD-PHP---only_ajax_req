@@ -14,6 +14,9 @@
 	</head>
 	<body >
         <div class=" container ">
+            <div class="alert alert-success d-none alert-dismissible fade show" role="alert" id="alert-cadastro">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <div id="carrinho">
                 <h2>Carrinho</h2>
                 <form action="" method="post" enctype="multipart/form" id="form_carrinho">
@@ -33,9 +36,6 @@
                 </form>
             </div>
             <div class="compra">
-                <div class="alert alert-success d-none alert-dismissible fade show" role="alert" id="alert-cadastro">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
                 <div id="div_clientes_loja" class="m-2">
                     <h2>
                         Produtos disponíveis

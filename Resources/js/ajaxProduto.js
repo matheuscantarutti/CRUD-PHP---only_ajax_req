@@ -159,6 +159,7 @@ function addCarrinho(btn){
     inputQtdVenda.setAttribute("readonly", "true")
     inputQtdVenda.name = `qtd_${id_produto}`
     inputNomeProduto.setAttribute("readonly", "true")
+    inputNomeProduto.name = `nome_${id_produto}`
     
     divVenda.appendChild(inputProdutoVenda);
     divVenda.appendChild(inputQtdVenda)
@@ -206,6 +207,7 @@ function colunaCarrinho(idProduto){
     var inputQtdVenda = document.createElement("input");
     inputQtdVenda.type = "number";
     inputQtdVenda.classList.add("w-25")
+    inputQtdVenda.classList.add("inputQtdVenda");
     
     var div = document.createElement("div");
     div.classList.add("btn-group")

@@ -1,0 +1,47 @@
+.twrap{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inputQtdVenda{
+    width: 25%;
+}
+
+@media screen and (max-width: 768px){
+    .div_btn_index{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .div_btn_index>a{
+        margin: .5em;
+    }
+
+    .inputQtdVenda{
+        max-width: 50%;
+        width:unset;
+    }
+
+    #carrinho{
+        text-align: center;
+    }
+
+    .div_total{
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .div_total>input, .div_total>button{
+        margin-bottom: .5em;
+    }
+
+    .labels_carrinho{
+        display: none;
+    }
+
+    header>ul{
+        margin: 5% 15%;
+    }
+}

@@ -23,7 +23,7 @@ function listaProdutos(tipo){
                 var response = JSON.parse(httpRequest.responseText);
 				preencheTabelaProdutos(response, tipo)
 			} else {
-				alert('Houve um problema com esta requisição, contate o Administrador.');
+				alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
 			}
 		}
 	}
@@ -65,6 +65,7 @@ function preencheTabelaProdutos(lista_objetos, tipo){
             dataDescricao.innerHTML = element.descricao
             var dataQuantidade = document.createElement("td");
             dataQuantidade.innerHTML = element.quantidade
+            dataQuantidade.id = "td_qtd_"+element.id;
             linha.appendChild(dataId);
             linha.appendChild(dataNome);
             linha.appendChild(dataPreco);
@@ -193,6 +194,7 @@ function addCarrinho(btn){
 
 
 function colunaCarrinho(idProduto){
+    
     var dataAcoes = document.createElement("td");
     var btn = document.createElement("button")
     btn.innerHTML = "Adicionar ao Carrinho"
@@ -206,7 +208,7 @@ function colunaCarrinho(idProduto){
     
     var inputQtdVenda = document.createElement("input");
     inputQtdVenda.type = "number";
-    inputQtdVenda.classList.add("w-25")
+    
     inputQtdVenda.classList.add("inputQtdVenda");
     
     var div = document.createElement("div");
@@ -216,14 +218,22 @@ function colunaCarrinho(idProduto){
     dataAcoes.appendChild(div);
     
     btn.addEventListener("click", function(){
+        var td_qtd = document.getElementById("td_qtd_"+idProduto)
+        
         if(inputQtdVenda.value <= 0){
             alert("Adicione a quantidade.")
             inputQtdVenda.focus();
-        } 
-        if(inputQtdVenda.value > 0){
+        }
+        
+        if(inputQtdVenda.value > 0 && td_qtd.textContent > inputQtdVenda.value){
             addCarrinho(btn)
+        } else {
+            alert("Quantidade excede o estoque.")
+            inputQtdVenda.focus();
+        
         }
     });
+
     return dataAcoes;
 }
 
@@ -231,7 +241,6 @@ function colunaAcoes(idProduto){
     var dataAcoes = document.createElement("td");
     var div = document.createElement("div");
     div.classList.add("btn-group")
-
     var a = document.createElement("a")
     a.innerHTML = "Editar"
     a.classList.add("m-1");
@@ -284,7 +293,7 @@ function salvaCadastro(form){
                 mostraMsgCadastro(response);
                 form.reset();
 			} else {
-				alert('Houve um problema com esta requisição, contate o Administrador.');
+				alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
 			}
 		}
 	}
@@ -324,7 +333,7 @@ function produtoPorId(idProduto){
 				var response = JSON.parse(httpRequest.responseText)
                 preencheForm(response);
 			} else {
-				alert('Houve um problema com esta requisição, contate o Administrador.');
+				alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
 			}
 		}
 	}
@@ -348,7 +357,7 @@ function preencheForm(objeto){
 }
 
 function deletaProduto(idProduto){
-    var autrizacao = confirm("Você tem certeza que deseja excluir o cadastro deste produto?");
+    var autrizacao = confirm("VocÃª tem certeza que deseja excluir o cadastro deste produto?");
     if(autrizacao){
         httpRequest.onreadystatechange = function(){
             if (httpRequest.readyState == 4) {
@@ -357,7 +366,7 @@ function deletaProduto(idProduto){
                     mostraMsgCadastro(response)
                     listaProdutos()
                 } else {
-                    alert('Houve um problema com esta requisição, contate o Administrador.');
+                    alert('Houve um problema com esta requisiÃ§Ã£o, contate o Administrador.');
                 }
             }
         }

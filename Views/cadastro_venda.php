@@ -42,21 +42,23 @@
                     </h2>
                     <select name="select_clientes" id="select_clientes" class="m-2 float-end"></select>
 			    </div>
-
-			    <table class="table table-striped" id="tabela_produtos_disponiveis" >
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nome</th>
-						<th>Preco</th>
-						<th>Qtd em estoque</th>
-						<th>Descricao</th>
-                        <th>Qtd da venda</th>
-					</tr>
-				</thead>
-				<tbody id="body-tabela-produto">
-				</tbody>
-			    </table>
+                <div class="twrap">
+                    <table class="table table-striped" id="tabela_produtos_disponiveis" >
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Preco</th>
+                                <th>Qtd em estoque</th>
+                                <th>Descricao</th>
+                                <th>Qtd da venda</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-tabela-produto">
+                        </tbody>
+                    </table>
+                </div>
             </div>
 			
 		</div>
